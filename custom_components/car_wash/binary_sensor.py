@@ -126,7 +126,10 @@ class CarWashBinarySensor(BinarySensorEntity):
     @property
     def icon(self):
         """Return the icon to use in the frontend, if any."""
-        return "mdi:car-wash"
+        if self._state:
+            return "mdi:car-wash"
+        else:
+            return "mdi:car-off"
 
     @staticmethod
     def _temp2c(temperature: float, temperature_unit: str) -> float:
